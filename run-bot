@@ -1,11 +1,4 @@
 #!/bin/sh
 
-if [ -z "${DISCORD_BOT_TOKEN}" ];
-then
-    echo "Please run:"
-    echo "DISCORD_BOT_TOKEN=<the token> $0"
-    exit 1
-fi
-
 docker build -t bot .
-docker run -e DISCORD_BOT_TOKEN=${DOCKER_BOT_TOKEN} -it bot
+docker run -e DISCORD_BOT_TOKEN=$(cat token) -it bot

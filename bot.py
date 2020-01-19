@@ -14,11 +14,14 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    channel = message.channel
     # The bot should never respond to itself, or it might get into a loop
     if message.author == client.user:
         return
     if message.content == "Hello":
-        await client.send_message(message.channel, "World")
+        await channel.send('Hello @{.author} use /help for help!'.format(message))
+    if message.content == "/help":
+        await channel.send('hi {.author} use /notify [thing you want notified] [time of minutes before notification]'.format(message))
 
 # The token must never be added to the source code, otherwise other people would be able to steal it.
 if "DISCORD_BOT_TOKEN" not in os.environ:
