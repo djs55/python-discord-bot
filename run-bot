@@ -1,4 +1,4 @@
 #!/bin/sh
 
 docker build -t bot .
-docker run -e DISCORD_BOT_TOKEN=$(cat token) -it bot
+docker run -e DISCORD_BOT_TOKEN=$(cat ~/token) -it bot
